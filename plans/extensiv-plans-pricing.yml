@@ -1,0 +1,122 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Extensiv
+providerId: extensiv
+created: '2026-07-04'
+modified: '2026-07-04'
+reconciled: false
+tags:
+- 3PL
+- Warehouse Management
+- WMS
+- Fulfillment
+- Plans
+description: >-
+  Extensiv sells its 3PL Warehouse Manager (and broader platform) as
+  subscription SaaS, not as a standalone metered API product. Pricing is
+  quote-based and tiered by users/volume, with a free trial. Third-party review
+  sites report a Starter tier around $550/month (about 5 users) and a
+  Professional tier around $950/month (about 10 users), with Enterprise pricing
+  custom - but Extensiv does not publish an official public price list, so all
+  figures must be confirmed with Extensiv sales. The REST API is included with a
+  subscription; API access is provisioned by generating Client ID / Client
+  Secret credentials in the Support Portal, and warehouses request REST API
+  access via api@extensiv.com. There is no separate per-call API fee published.
+notes: >-
+  Dollar figures are from third-party review sites and are indicative only.
+  Extensiv routes pricing through sales/demo. Verify current tiers, user counts,
+  and whether API access carries any add-on cost during reconciliation.
+sources:
+- https://www.extensiv.com/
+- https://help.extensiv.com/en_US/rest-api
+- https://softwareconnect.com/reviews/extensiv-3pl-warehouse-manager/
+- https://softwarefinder.com/supply-chain-management/extensiv-3pl-warehouse-manager
+plans:
+- id: extensiv-trial
+  name: Free Trial
+  type: free
+  description: >-
+    Time-limited free trial (commonly reported as ~30 days) to evaluate 3PL
+    Warehouse Manager before subscribing.
+  entries:
+  - label: Trial Period
+    name: trial_period
+    type: usage
+    metric: days
+    limit: 30
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free during trial
+    userMultiplied: false
+  elements:
+  - name: Platform Evaluation
+  - name: REST API Access
+- id: extensiv-starter
+  name: Starter
+  type: paid
+  description: >-
+    Entry subscription tier for smaller 3PL operations. Third-party sources
+    report roughly $550/month for about 5 users; confirm with Extensiv.
+  entries:
+  - label: Monthly Subscription
+    name: starter_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: approximately $550/month (indicative; ~5 users)
+    userMultiplied: true
+  elements:
+  - name: 3PL Warehouse Manager
+  - name: REST API Access
+  - name: Standard Support
+- id: extensiv-professional
+  name: Professional
+  type: paid
+  description: >-
+    Mid-tier subscription for growing 3PLs. Third-party sources report roughly
+    $950/month for about 10 users; confirm with Extensiv.
+  entries:
+  - label: Monthly Subscription
+    name: professional_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: approximately $950/month (indicative; ~10 users)
+    userMultiplied: true
+  elements:
+  - name: 3PL Warehouse Manager
+  - name: REST API Access
+  - name: Higher User Count
+- id: extensiv-enterprise
+  name: Enterprise / Custom
+  type: enterprise
+  description: >-
+    Custom subscription for high-volume 3PLs and brands, spanning warehouse,
+    order, and inventory management plus integrations. Pricing negotiated with
+    Extensiv sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Volume and Users
+  - name: Multi-Product Platform
+  - name: Premium Support and SLAs
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

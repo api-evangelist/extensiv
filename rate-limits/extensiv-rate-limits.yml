@@ -1,0 +1,61 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Extensiv
+providerId: extensiv
+created: '2026-07-04'
+modified: '2026-07-04'
+reconciled: false
+tags:
+- 3PL
+- Warehouse Management
+- WMS
+- Rate Limiting
+- Quotas
+description: >-
+  Extensiv does not publish fixed numeric per-minute request limits for the 3PL
+  Warehouse Manager REST API in its public help documentation. The primary
+  documented throttling control is the access token lifetime: tokens minted at
+  secure-wms.com/AuthServer are short-lived (typically valid 30-60 minutes), so
+  clients must cache and refresh tokens rather than requesting a new token per
+  call. The API is HTTPS-only and paginated (page size / page number), so bulk
+  reads of orders and inventory are expected to page rather than pull everything
+  at once. Any per-account request ceilings are governed by contract and are not
+  published.
+notes: >-
+  No official numeric request-rate limit is documented as of the review date.
+  Verify with Extensiv (api@extensiv.com) whether per-account or per-endpoint
+  ceilings apply, and honor 429 responses with backoff. Reuse bearer tokens
+  until near expiry to avoid hammering the auth server.
+sources:
+- https://help.extensiv.com/en_US/rest-api
+- https://help.extensiv.com/rest-api/getting-started-with-credential-management
+- https://help.extensiv.com/rest-api/providing-rest-api-access
+responseCodes:
+  throttled: 429
+limits:
+- name: REST API Requests
+  scope: account
+  metric: requests
+  limit: not published
+  notes: No fixed numeric request-rate limit is documented for the 3PL Warehouse Manager REST API.
+- name: Access Token Lifetime
+  scope: token
+  metric: minutes
+  limit: 30-60 minutes (typical)
+  notes: Tokens expire; cache and refresh rather than minting per request.
+- name: Collection Pagination
+  scope: request
+  metric: records
+  limit: configurable via page size (pgsiz) / page number (pgnum)
+  notes: List endpoints return paged HAL collections; page through large result sets.
+policies:
+- name: HTTPS Only
+  description: The API rejects plain HTTP; all traffic must use HTTPS.
+- name: Token Reuse
+  description: Reuse the bearer token until it nears expiry instead of authenticating on every call.
+- name: Backoff Strategy
+  description: On 429 or transient 5xx, implement exponential backoff with jitter and honor Retry-After if present.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

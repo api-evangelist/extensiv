@@ -1,0 +1,181 @@
+aid: extensiv
+url: https://raw.githubusercontent.com/api-evangelist/extensiv/refs/heads/main/apis.yml
+name: Extensiv
+kind: company
+description: Extensiv (formerly 3PL Central, rebranded in 2022) is a cloud-native
+  omnichannel fulfillment software company for third-party logistics providers (3PLs)
+  and brands. Its platform combines warehouse management (3PL Warehouse Manager and
+  Warehouse Manager), order management, inventory management, and integration
+  tooling - built from the combination of 3PL Central, Skubana, Scout, and CartRover.
+  The flagship developer surface is the 3PL Warehouse Manager REST API (auth server
+  at secure-wms.com/AuthServer), which exposes orders, inventory, items, customers,
+  receivers/ASN, stock summaries, and warehouses to external integrators. Access is
+  provisioned with Client ID / Client Secret credentials that mint short-lived
+  bearer tokens. NOTE - the SecureWMS/3PL Warehouse Manager REST API itself is
+  documented in more detail in the sibling all/3plcentral entry; this entry profiles
+  the Extensiv company and platform and its relationship to that API.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- 3PL
+- Warehouse Management
+- WMS
+- Order Management
+- Inventory Management
+- Fulfillment
+- Logistics
+- Supply Chain
+created: '2026-07-04'
+modified: '2026-07-04'
+specificationVersion: '0.19'
+apis:
+- aid: extensiv:extensiv-orders-api
+  name: Extensiv Orders API
+  tags:
+  - Orders
+  - Fulfillment
+  - Shipping
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
+  baseURL: https://secure-wms.com
+  properties:
+  - url: https://help.extensiv.com/en_US/rest-api
+    type: Documentation
+  - url: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
+    type: APIReference
+  - url: openapi/extensiv-openapi.yml
+    type: OpenAPI
+  description: Create and retrieve sales/fulfillment orders in 3PL Warehouse Manager -
+    the most common use of the API. Supports listing, filtering, creating, updating,
+    and retrieving individual orders along with their order items and allocation state.
+- aid: extensiv:extensiv-inventory-api
+  name: Extensiv Inventory API
+  tags:
+  - Inventory
+  - Stock Summaries
+  - Availability
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
+  baseURL: https://secure-wms.com
+  properties:
+  - url: https://help.extensiv.com/en_US/rest-api
+    type: Documentation
+  - url: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
+    type: APIReference
+  - url: openapi/extensiv-openapi.yml
+    type: OpenAPI
+  description: Retrieve on-hand inventory and stock summaries, including inventory
+    received on or before a given date and rolled-up availability by SKU. A primary
+    read surface for keeping external systems in sync with warehouse stock.
+- aid: extensiv:extensiv-items-api
+  name: Extensiv Items API
+  tags:
+  - Items
+  - SKUs
+  - Catalog
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
+  baseURL: https://secure-wms.com
+  properties:
+  - url: https://help.extensiv.com/en_US/rest-api
+    type: Documentation
+  - url: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
+    type: APIReference
+  - url: openapi/extensiv-openapi.yml
+    type: OpenAPI
+  description: Read the SKU/item master for a customer - the products a 3PL stores and
+    ships. Items are scoped to a customer and carry identifiers, descriptions, and
+    packaging attributes used across orders and inventory.
+- aid: extensiv:extensiv-customers-api
+  name: Extensiv Customers API
+  tags:
+  - Customers
+  - Accounts
+  - Tenants
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
+  baseURL: https://secure-wms.com
+  properties:
+  - url: https://help.extensiv.com/en_US/rest-api
+    type: Documentation
+  - url: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
+    type: APIReference
+  - url: openapi/extensiv-openapi.yml
+    type: OpenAPI
+  description: List and retrieve the customers (the brands/merchants a 3PL serves)
+    configured in a warehouse. Customers are the top-level tenant under which items,
+    orders, and inventory are organized.
+- aid: extensiv:extensiv-receivers-api
+  name: Extensiv Receivers (ASN) API
+  tags:
+  - Receivers
+  - ASN
+  - Receiving
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
+  baseURL: https://secure-wms.com
+  properties:
+  - url: https://help.extensiv.com/en_US/rest-api
+    type: Documentation
+  - url: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
+    type: APIReference
+  - url: openapi/extensiv-openapi.yml
+    type: OpenAPI
+  description: Manage inbound receivers / advance shipping notices (ASNs) - the
+    expected inbound shipments a warehouse receives against. Create, list, and
+    retrieve receivers and their line items to drive the receiving workflow.
+- aid: extensiv:extensiv-warehouses-api
+  name: Extensiv Warehouses API
+  tags:
+  - Warehouses
+  - Facilities
+  - Locations
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
+  baseURL: https://secure-wms.com
+  properties:
+  - url: https://help.extensiv.com/en_US/rest-api
+    type: Documentation
+  - url: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
+    type: APIReference
+  - url: openapi/extensiv-openapi.yml
+    type: OpenAPI
+  description: List the physical warehouses/facilities configured on an account and
+    their identifiers, used to scope inventory, orders, and receiving to a location.
+- aid: extensiv:extensiv-auth-token-api
+  name: Extensiv Auth Token API
+  tags:
+  - Authentication
+  - OAuth2
+  - Tokens
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://help.extensiv.com/rest-api/getting-started-with-credential-management
+  baseURL: https://secure-wms.com/AuthServer
+  properties:
+  - url: https://help.extensiv.com/rest-api/getting-started-with-credential-management
+    type: Documentation
+  - url: https://help.extensiv.com/rest-api/providing-rest-api-access
+    type: APIReference
+  - url: openapi/extensiv-openapi.yml
+    type: OpenAPI
+  description: OAuth2-style token endpoint at secure-wms.com/AuthServer. A Base64
+    Client ID:Client Secret authorization header plus a grant_type mints a short-lived
+    bearer access token (typically valid 30-60 minutes) that authorizes all other
+    3PL Warehouse Manager REST API calls.
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/extensiv
+- type: Website
+  url: https://www.extensiv.com
+- type: Documentation
+  url: https://help.extensiv.com/en_US/rest-api
+- type: Plans
+  url: plans/extensiv-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/extensiv-rate-limits.yml
+- type: FinOps
+  url: finops/extensiv-finops.yml
+- url: https://www.extensiv.com/blog
+  type: Blog
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

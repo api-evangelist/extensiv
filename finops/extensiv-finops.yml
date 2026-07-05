@@ -1,0 +1,81 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Extensiv
+providerId: extensiv
+created: '2026-07-04'
+modified: '2026-07-04'
+reconciled: false
+tags:
+- 3PL
+- Warehouse Management
+- WMS
+- Fulfillment
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Extensiv spend. Extensiv is subscription SaaS (3PL Warehouse
+  Manager plus the broader order/inventory/integration platform), not a metered
+  per-call API. Cost is a monthly/annual subscription tiered by users and volume,
+  quoted through sales, with Starter/Professional tiers reported by third parties
+  (~$550 and ~$950/month) and custom Enterprise pricing. The REST API is included
+  with the subscription; there is no published per-request API charge, so API
+  usage does not generate a separate line item. The main cost levers are the
+  subscription tier, seat/user count, and any add-on modules or integrations.
+notes: >-
+  Extensiv does not publish an official price list; figures are indicative and
+  must be confirmed with sales. Treat API integration cost as engineering effort
+  plus the base subscription, not a usage meter.
+sources:
+- https://www.extensiv.com/
+- https://help.extensiv.com/en_US/rest-api
+- https://softwareconnect.com/reviews/extensiv-3pl-warehouse-manager/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Extensiv
+serviceCategory: Supply Chain and Logistics Software
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+meters:
+- name: subscription
+  description: Base 3PL Warehouse Manager / platform subscription, tiered by plan.
+  unit: subscription
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: users
+  description: Seat/user count that scales subscription tiers.
+  unit: users
+  aggregation: max
+  dimensions:
+  - account
+- name: addon_modules
+  description: Optional platform modules and integrations (order/inventory management, connectors).
+  unit: modules
+  aggregation: sum
+  dimensions:
+  - account
+principles:
+- name: Visibility
+  description: Track the subscription tier, seat count, and any add-on modules against actual warehouse/order volume served.
+- name: Allocation
+  description: Map subscription and seats to the 3PL business units or brand customers they support.
+- name: Optimization
+  description: Right-size the plan tier and seat count to real usage; consolidate integrations rather than paying for unused connectors; the REST API adds no per-call cost, so integrate freely within the subscription.
+- name: Accountability
+  description: Assign an owner for the Extensiv contract and review tier/seats at renewal against growth in orders and inventory volume.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Extensiv 3PL Warehouse Manager API (modeled)",
+    "version": "1.0",
+    "description": "Modeled OpenCollection for the Extensiv 3PL Warehouse Manager REST API (formerly 3PL Central). Auth is CONFIRMED against Extensiv help docs (Base64 Client ID:Client Secret -> bearer token at secure-wms.com/AuthServer, ~30-60 min lifetime); resource endpoints are MODELED from documented resource areas. HTTPS only. Request access via api@extensiv.com. See the sibling all/3plcentral entry for a fuller SecureWMS API profile."
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Authentication", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Obtain access token (confirmed)", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure-wms.com/AuthServer/api/Token",
+            "body": { "type": "json", "data": "{\"grant_type\": \"client_credentials\"}" }
+          },
+          "docs": "CONFIRMED. Base64-encode 'ClientID:ClientSecret' as a Basic authorization header and POST a grant_type to mint a short-lived bearer token (typically valid 30-60 minutes)."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Orders", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List orders (modeled)", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://secure-wms.com/orders",
+            "params": [
+              { "name": "pgsiz", "value": "100", "type": "query", "description": "Page size." },
+              { "name": "pgnum", "value": "1", "type": "query", "description": "Page number." }
+            ]
+          },
+          "docs": "List and filter sales/fulfillment orders. Modeled."
+        },
+        {
+          "info": { "name": "Create order (modeled)", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure-wms.com/orders",
+            "body": { "type": "json", "data": "{\"customerId\": 0, \"facilityId\": 0, \"referenceNum\": \"\", \"orderItems\": []}" }
+          },
+          "docs": "Create a new order. Modeled."
+        },
+        {
+          "info": { "name": "Retrieve order (modeled)", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://secure-wms.com/orders/:orderId",
+            "params": [
+              { "name": "orderId", "value": "", "type": "path", "description": "Order id." }
+            ]
+          },
+          "docs": "Retrieve a single order by id. Modeled."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Inventory", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Retrieve inventory (modeled)", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://secure-wms.com/inventory",
+            "params": [
+              { "name": "pgsiz", "value": "100", "type": "query", "description": "Page size." },
+              { "name": "pgnum", "value": "1", "type": "query", "description": "Page number." }
+            ]
+          },
+          "docs": "Retrieve on-hand inventory, optionally filtered by customer, facility, or received date. Modeled."
+        },
+        {
+          "info": { "name": "Retrieve stock summaries (modeled)", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://secure-wms.com/inventory/stockSummaries"
+          },
+          "docs": "Rolled-up on-hand/available/committed quantities by SKU. Modeled."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Customers", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List customers (modeled)", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://secure-wms.com/customers"
+          },
+          "docs": "List the customers (brands/merchants) configured in the warehouse. Modeled."
+        },
+        {
+          "info": { "name": "List customer items/SKUs (modeled)", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://secure-wms.com/customers/:customerId/items",
+            "params": [
+              { "name": "customerId", "value": "", "type": "path", "description": "Customer id." }
+            ]
+          },
+          "docs": "List the SKU/item master for a customer. Modeled."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Receivers", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List receivers / ASNs (modeled)", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://secure-wms.com/inventory/receivers"
+          },
+          "docs": "List inbound receivers / advance shipping notices. Modeled."
+        },
+        {
+          "info": { "name": "Create receiver / ASN (modeled)", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://secure-wms.com/inventory/receivers",
+            "body": { "type": "json", "data": "{\"customerId\": 0, \"facilityId\": 0, \"referenceNum\": \"\", \"receiveItems\": []}" }
+          },
+          "docs": "Create an inbound receiver / ASN. Modeled."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Warehouses", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List facilities (modeled)", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://secure-wms.com/facilities"
+          },
+          "docs": "List the physical warehouses/facilities on the account. Modeled."
+        }
+      ]
+    }
+  ]
+}

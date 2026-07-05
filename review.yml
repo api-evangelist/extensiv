@@ -1,0 +1,104 @@
+aid: extensiv
+name: Extensiv
+review:
+  question: Does Extensiv expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-04'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Extensiv's public developer surface - the
+    3PL Warehouse Manager REST API (formerly the 3PL Central REST API) - is
+    request/response REST over HTTPS. Authentication is via a token endpoint at
+    secure-wms.com/AuthServer that mints short-lived bearer tokens; resource
+    access (orders, inventory, items, customers, receivers/ASN, stock summaries,
+    warehouses) is over HTTPS with pagination. No server-push transport
+    (WebSocket or SSE) is documented on Extensiv's own API to model. Event-style
+    integration with Extensiv is handled through polling the REST resources or
+    through Extensiv's integration/connector tooling rather than a public
+    WebSocket.
+findings:
+  summary: |
+    Extensiv does not publish a documented public WebSocket API. Extensiv
+    (formerly 3PL Central, rebranded in 2022, and assembled from 3PL Central,
+    Skubana, Scout, and CartRover) sells cloud-native warehouse, order, and
+    inventory management software for 3PLs and brands. Its flagship developer
+    interface is the 3PL Warehouse Manager REST API. Authentication is confirmed
+    against Extensiv's help docs: a Base64-encoded "Client ID:Client Secret"
+    authorization header plus a grant_type is POSTed to
+    https://secure-wms.com/AuthServer/api/Token to obtain a short-lived bearer
+    access token (typically valid 30-60 minutes), which authorizes all resource
+    calls. The API is HTTPS-only, paginated, and HAL/hypermedia-style. The full
+    request/response reference lives at developer.extensiv.com, a
+    JavaScript-rendered developer portal that is effectively gated to
+    unauthenticated crawling, so exact resource paths and payloads in this entry
+    are honestly modeled from Extensiv's documented resource areas and common use
+    cases (create/retrieve orders, retrieve inventory and stock summaries). No
+    realtime, bidirectional, or streaming WebSocket (ws:// or wss://) endpoint is
+    documented anywhere on Extensiv's own API.
+  openSource: |
+    Extensiv's platform is proprietary commercial SaaS; there is no open-source
+    core. The REST API is included with a subscription. API access is provisioned
+    by generating Client ID / Client Secret credentials in the Support Portal, and
+    warehouses request REST API access via api@extensiv.com.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://secure-wms.com
+      documented: true
+      note: 3PL Warehouse Manager REST API resources (orders, inventory, items, customers, receivers, facilities). HTTPS only; no plain HTTP.
+    - protocol: OAuth2 Token
+      scheme: https
+      baseURL: https://secure-wms.com/AuthServer
+      documented: true
+      note: POST /api/Token with Base64 Client ID:Client Secret + grant_type returns a short-lived bearer token (~30-60 min).
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in Extensiv's REST API or help docs as of the review date.
+  endpointsConfirmed:
+    - POST https://secure-wms.com/AuthServer/api/Token
+  endpointsModeled:
+    - GET    https://secure-wms.com/orders
+    - POST   https://secure-wms.com/orders
+    - GET    https://secure-wms.com/orders/{orderId}
+    - PUT    https://secure-wms.com/orders/{orderId}
+    - GET    https://secure-wms.com/inventory
+    - GET    https://secure-wms.com/inventory/stockSummaries
+    - GET    https://secure-wms.com/inventory/receivers
+    - POST   https://secure-wms.com/inventory/receivers
+    - GET    https://secure-wms.com/inventory/receivers/{receiverId}
+    - GET    https://secure-wms.com/customers
+    - GET    https://secure-wms.com/customers/{customerId}
+    - GET    https://secure-wms.com/customers/{customerId}/items
+    - GET    https://secure-wms.com/facilities
+sources:
+  - url: https://help.extensiv.com/en_US/rest-api
+    type: Documentation
+    note: REST API landing page; confirms Client ID/Secret credentials and common use cases.
+  - url: https://help.extensiv.com/rest-api/getting-started-with-credential-management
+    type: Documentation
+    note: Credential management - Client ID / Client Secret provisioning in the Support Portal.
+  - url: https://help.extensiv.com/rest-api/providing-rest-api-access
+    type: Documentation
+    note: Base64 authorization header (ClientID:ClientSecret); token required in HTTP header; token valid ~30-60 min; HTTPS only; request access via api@extensiv.com.
+  - url: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
+    type: APIReference
+    note: 3PL Warehouse Manager API reference (JavaScript-rendered developer portal; effectively gated to crawlers).
+  - url: https://www.extensiv.com/newsroom/3pl-central-rebrands-as-extensiv
+    type: Announcement
+    note: 2022 rebrand of 3PL Central to Extensiv.
+  - url: https://developer.3plcentral.com/
+    type: APIReference
+    note: Legacy 3PL Central REST API portal (pre-rebrand host).
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists on Extensiv's own API. Extensiv's public
+    developer interface is request/response REST over HTTPS (3PL Warehouse
+    Manager REST API) with an OAuth2-style token endpoint. No AsyncAPI document
+    was created because there is no server-push transport (WebSocket or SSE) on
+    Extensiv's own API to model. The SecureWMS / 3PL Warehouse Manager REST API
+    itself is profiled in more detail in the sibling all/3plcentral entry; this
+    entry focuses on the Extensiv company/platform.

@@ -1,0 +1,161 @@
+{
+  "info": {
+    "name": "Extensiv 3PL Warehouse Manager API (modeled)",
+    "description": "Modeled Postman collection for the Extensiv 3PL Warehouse Manager REST API (formerly the 3PL Central REST API). Authentication is CONFIRMED: POST a Base64 'Client ID:Client Secret' Basic auth header plus a grant_type to https://secure-wms.com/AuthServer/api/Token to mint a short-lived bearer token (typically 30-60 min), then send it as Authorization: Bearer <token> on all resource calls. Resource endpoints (orders, inventory, items, customers, receivers/ASN, facilities) are MODELED from Extensiv's publicly documented resource areas; the live reference at developer.extensiv.com is a JavaScript-rendered, effectively gated portal, so verify exact paths and payloads. HTTPS only. Request REST API access via api@extensiv.com. See the sibling all/3plcentral entry for a more detailed SecureWMS API profile.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      { "key": "token", "value": "{{bearerToken}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://secure-wms.com", "type": "string" },
+    { "key": "clientCredentialsBase64", "value": "", "type": "string" },
+    { "key": "bearerToken", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Obtain access token (confirmed)",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                { "key": "password", "value": "{{clientSecret}}", "type": "string" },
+                { "key": "username", "value": "{{clientId}}", "type": "string" }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"grant_type\": \"client_credentials\"\n}" },
+            "url": { "raw": "{{baseUrl}}/AuthServer/api/Token", "host": ["{{baseUrl}}"], "path": ["AuthServer", "api", "Token"] },
+            "description": "CONFIRMED endpoint. Base64-encode 'ClientID:ClientSecret' as a Basic auth header and POST a grant_type to receive a short-lived bearer access_token (typically valid 30-60 minutes)."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "List orders (modeled)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/orders?pgsiz=100&pgnum=1", "host": ["{{baseUrl}}"], "path": ["orders"], "query": [ { "key": "pgsiz", "value": "100" }, { "key": "pgnum", "value": "1" } ] },
+            "description": "List and filter sales/fulfillment orders. Modeled."
+          }
+        },
+        {
+          "name": "Create order (modeled)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"customerId\": 0,\n  \"facilityId\": 0,\n  \"referenceNum\": \"\",\n  \"orderItems\": []\n}" },
+            "url": { "raw": "{{baseUrl}}/orders", "host": ["{{baseUrl}}"], "path": ["orders"] },
+            "description": "Create a new order. Modeled."
+          }
+        },
+        {
+          "name": "Retrieve order (modeled)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/orders/:orderId", "host": ["{{baseUrl}}"], "path": ["orders", ":orderId"] },
+            "description": "Retrieve a single order by id. Modeled."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Inventory",
+      "item": [
+        {
+          "name": "Retrieve inventory (modeled)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/inventory?pgsiz=100&pgnum=1", "host": ["{{baseUrl}}"], "path": ["inventory"], "query": [ { "key": "pgsiz", "value": "100" }, { "key": "pgnum", "value": "1" } ] },
+            "description": "Retrieve on-hand inventory, optionally filtered by customer, facility, or received date. Modeled."
+          }
+        },
+        {
+          "name": "Retrieve stock summaries (modeled)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/inventory/stockSummaries", "host": ["{{baseUrl}}"], "path": ["inventory", "stockSummaries"] },
+            "description": "Rolled-up on-hand/available/committed quantities by SKU. Modeled."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "List customers (modeled)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/customers", "host": ["{{baseUrl}}"], "path": ["customers"] },
+            "description": "List the customers (brands/merchants) configured in the warehouse. Modeled."
+          }
+        },
+        {
+          "name": "List customer items/SKUs (modeled)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/customers/:customerId/items", "host": ["{{baseUrl}}"], "path": ["customers", ":customerId", "items"] },
+            "description": "List the SKU/item master for a customer. Modeled."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Receivers",
+      "item": [
+        {
+          "name": "List receivers / ASNs (modeled)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/inventory/receivers", "host": ["{{baseUrl}}"], "path": ["inventory", "receivers"] },
+            "description": "List inbound receivers / advance shipping notices. Modeled."
+          }
+        },
+        {
+          "name": "Create receiver / ASN (modeled)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"customerId\": 0,\n  \"facilityId\": 0,\n  \"referenceNum\": \"\",\n  \"receiveItems\": []\n}" },
+            "url": { "raw": "{{baseUrl}}/inventory/receivers", "host": ["{{baseUrl}}"], "path": ["inventory", "receivers"] },
+            "description": "Create an inbound receiver / ASN. Modeled."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Warehouses",
+      "item": [
+        {
+          "name": "List facilities (modeled)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/facilities", "host": ["{{baseUrl}}"], "path": ["facilities"] },
+            "description": "List the physical warehouses/facilities on the account. Modeled."
+          }
+        }
+      ]
+    }
+  ]
+}
