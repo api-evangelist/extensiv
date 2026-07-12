@@ -1,0 +1,20 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/extensiv-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicClientCredentials
+  type: http
+  scheme: basic
+  description: Base64-encoded "Client ID:Client Secret" used only against /AuthServer/api/Token.
+  sources:
+  - openapi/extensiv-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: Short-lived bearer access token minted by the auth server.
+  sources:
+  - openapi/extensiv-openapi.yml

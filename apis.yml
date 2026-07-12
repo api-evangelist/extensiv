@@ -162,6 +162,12 @@ apis:
     bearer access token (typically valid 30-60 minutes) that authorizes all other
     3PL Warehouse Manager REST API calls.
 common:
+- type: TrustCenter
+  url: security/extensiv-trust-center.yml
+- type: DomainSecurity
+  url: security/extensiv-domain-security.yml
+- type: Authentication
+  url: authentication/extensiv-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/extensiv
 - type: Website
