@@ -162,6 +162,8 @@ apis:
     bearer access token (typically valid 30-60 minutes) that authorizes all other
     3PL Warehouse Manager REST API calls.
 common:
+- type: AgenticAccess
+  url: agentic-access/extensiv-agentic-access.yml
 - type: TrustCenter
   url: security/extensiv-trust-center.yml
 - type: DomainSecurity
