@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: Extensiv 3PL Warehouse Manager API (modeled) Authentication Customers API
+  version: 1.0.0
+  description: 'Modeled OpenAPI description of the Extensiv 3PL Warehouse Manager REST API (formerly the 3PL Central REST API). Authentication is CONFIRMED against Extensiv''s public help documentation: a Base64-encoded "Client ID:Client Secret" authorization header plus a grant_type is POSTed to https://secure-wms.com/AuthServer/api/Token to mint a short-lived bearer access token (typically valid 30-60 minutes), which is then sent as `Authorization: Bearer <token>` on all resource calls.
+
+    The resource endpoints below (orders, inventory, stock summaries, items, customers, receivers/ASN, warehouses) are MODELED from Extensiv''s publicly documented resource areas and common API use cases. The full request/response reference at developer.extensiv.com is a JavaScript-rendered developer portal and is effectively gated, so exact paths, query parameters, and payload schemas here are honestly modeled and should be reconciled against the live reference. The 3PL Warehouse Manager REST API is a HATEOAS/HAL-style hypermedia API; only HTTPS is supported (no plain HTTP).
+
+    NOTE: The SecureWMS / 3PL Warehouse Manager REST API is profiled in more detail in the sibling all/3plcentral catalog entry. This description supports the Extensiv company/platform entry.'
+  contact:
+    name: Extensiv API Access
+    email: api@extensiv.com
+    url: https://help.extensiv.com/en_US/rest-api
+  license:
+    name: Proprietary - Extensiv Terms of Service
+    url: https://www.extensiv.com
+servers:
+- url: https://secure-wms.com
+  description: 3PL Warehouse Manager REST API (production, HTTPS only). endpointsConfirmed = auth only; resource endpoints are endpointsModeled.
+tags:
+- name: Customers
+  description: Customer/tenant accounts (endpointsModeled).
+paths:
+  /customers:
+    get:
+      tags:
+      - Customers
+      summary: List customers (endpointsModeled)
+      responses:
+        '200':
+          description: A collection of customers.
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/CustomerCollection'
+      security:
+      - bearerAuth: []
+  /customers/{customerId}:
+    get:
+      tags:
+      - Customers
+      summary: Retrieve a customer (endpointsModeled)
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The requested customer.
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+      security:
+      - bearerAuth: []
+components:
+  schemas:
+    CustomerCollection:
+      type: object
+      properties:
+        totalResults:
+          type: integer
+        _embedded:
+          type: object
+          properties:
+            customers:
+              type: array
+              items:
+                $ref: '#/components/schemas/Customer'
+    Customer:
+      type: object
+      properties:
+        customerId:
+          type: integer
+        companyName:
+          type: string
+  securitySchemes:
+    basicClientCredentials:
+      type: http
+      scheme: basic
+      description: Base64-encoded "Client ID:Client Secret" used only against /AuthServer/api/Token.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Short-lived bearer access token minted by the auth server.
