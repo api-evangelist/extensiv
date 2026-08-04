@@ -1,0 +1,26 @@
+{
+  "provider": "extensiv",
+  "sources": [
+    "extensiv-authentication-api-openapi.yml",
+    "extensiv-customers-api-openapi.yml",
+    "extensiv-inventory-api-openapi.yml",
+    "extensiv-items-api-openapi.yml",
+    "extensiv-orders-api-openapi.yml",
+    "extensiv-receivers-api-openapi.yml",
+    "extensiv-warehouses-api-openapi.yml"
+  ],
+  "outputs": [
+    "extensiv-authentication-api-openapi.yml",
+    "extensiv-customers-api-openapi.yml",
+    "extensiv-inventory-api-openapi.yml",
+    "extensiv-items-api-openapi.yml",
+    "extensiv-orders-api-openapi.yml",
+    "extensiv-receivers-api-openapi.yml",
+    "extensiv-warehouses-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
