@@ -1,0 +1,196 @@
+{
+  "item": [
+    {
+      "id": "77e977b2-6770-4c71-b6b9-dd0694b1d7b9",
+      "name": "Authentication",
+      "description": {
+        "content": "OAuth2-style token endpoint (endpointsConfirmed).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5c21d118-8bfb-452e-aa73-5a857459a915",
+          "name": "Obtain an access token (endpointsConfirmed)",
+          "request": {
+            "name": "Obtain an access token (endpointsConfirmed)",
+            "description": {
+              "content": "CONFIRMED endpoint. Exchange a Base64-encoded \"Client ID:Client Secret\" Basic authorization header plus a grant_type for a short-lived bearer access token. The token is typically valid 30-60 minutes and must be sent as `Authorization: Bearer <token>` on all subsequent calls.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "AuthServer",
+                "api",
+                "Token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"grant_type\": \"<string>\",\n  \"user_login_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "75282e34-f539-4a2b-b5c2-7e8fff3b388b",
+              "name": "Access token issued.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "AuthServer",
+                    "api",
+                    "Token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"grant_type\": \"client_credentials\",\n  \"user_login_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_token\": \"string\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 3600\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86c016b5-7b43-4500-b042-c288f7de46e2",
+              "name": "Invalid client credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "AuthServer",
+                    "api",
+                    "Token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"grant_type\": \"client_credentials\",\n  \"user_login_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://secure-wms.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "add7c4d9-765a-41b0-98bc-490bd2259a65",
+    "name": "Extensiv 3PL Warehouse Manager API (modeled) Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Modeled OpenAPI description of the Extensiv 3PL Warehouse Manager REST API (formerly the 3PL Central REST API). Authentication is CONFIRMED against Extensiv's public help documentation: a Base64-encoded \"Client ID:Client Secret\" authorization header plus a grant_type is POSTed to https://secure-wms.com/AuthServer/api/Token to mint a short-lived bearer access token (typically valid 30-60 minutes), which is then sent as `Authorization: Bearer <token>` on all resource calls.\nThe resource endpoints below (orders, inventory, stock summaries, items, customers, receivers/ASN, warehouses) are MODELED from Extensiv's publicly documented resource areas and common API use cases. The full request/response reference at developer.extensiv.com is a JavaScript-rendered developer portal and is effectively gated, so exact paths, query parameters, and payload schemas here are honestly modeled and should be reconciled against the live reference. The 3PL Warehouse Manager REST API is a HATEOAS/HAL-style hypermedia API; only HTTPS is supported (no plain HTTP).\nNOTE: The SecureWMS / 3PL Warehouse Manager REST API is profiled in more detail in the sibling all/3plcentral catalog entry. This description supports the Extensiv company/platform entry.\n\nContact Support:\n Name: Extensiv API Access\n Email: api@extensiv.com",
+      "type": "text/plain"
+    }
+  }
+}

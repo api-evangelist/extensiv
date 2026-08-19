@@ -1,0 +1,38 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Extensiv 3PL Warehouse Manager API (modeled) Authentication API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Obtain an access token (endpointsConfirmed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://secure-wms.com/AuthServer/api/Token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "CONFIRMED endpoint. Exchange a Base64-encoded \"Client ID:Client Secret\" Basic authorization header plus a grant_type for a short-lived bearer access token. The token is typically valid 30-60 minutes and must be sent as `Authorization: Bearer <token>` on all subsequent calls."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,146 @@
+{
+  "item": [
+    {
+      "id": "0269d8a3-ae22-4dfb-8a0e-c2139120fa79",
+      "name": "Items",
+      "description": {
+        "content": "Customer SKU/item master (endpointsModeled).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ccadba3b-1065-4bbb-9dc7-0c624ccb9cd4",
+          "name": "List a customer's items/SKUs (endpointsModeled)",
+          "request": {
+            "name": "List a customer's items/SKUs (endpointsModeled)",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "rql",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b747572c-0be9-434d-85cc-5e372562d6cb",
+              "name": "A collection of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rql",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"totalResults\": 3490,\n  \"_embedded\": {\n    \"items\": [\n      {\n        \"itemId\": 2178,\n        \"sku\": \"string\",\n        \"description\": \"string\"\n      },\n      {\n        \"itemId\": 5626,\n        \"sku\": \"string\",\n        \"description\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://secure-wms.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4242b8b4-b8f2-4437-8482-7118171683aa",
+    "name": "Extensiv 3PL Warehouse Manager API (modeled) Authentication Items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Modeled OpenAPI description of the Extensiv 3PL Warehouse Manager REST API (formerly the 3PL Central REST API). Authentication is CONFIRMED against Extensiv's public help documentation: a Base64-encoded \"Client ID:Client Secret\" authorization header plus a grant_type is POSTed to https://secure-wms.com/AuthServer/api/Token to mint a short-lived bearer access token (typically valid 30-60 minutes), which is then sent as `Authorization: Bearer <token>` on all resource calls.\nThe resource endpoints below (orders, inventory, stock summaries, items, customers, receivers/ASN, warehouses) are MODELED from Extensiv's publicly documented resource areas and common API use cases. The full request/response reference at developer.extensiv.com is a JavaScript-rendered developer portal and is effectively gated, so exact paths, query parameters, and payload schemas here are honestly modeled and should be reconciled against the live reference. The 3PL Warehouse Manager REST API is a HATEOAS/HAL-style hypermedia API; only HTTPS is supported (no plain HTTP).\nNOTE: The SecureWMS / 3PL Warehouse Manager REST API is profiled in more detail in the sibling all/3plcentral catalog entry. This description supports the Extensiv company/platform entry.\n\nContact Support:\n Name: Extensiv API Access\n Email: api@extensiv.com",
+      "type": "text/plain"
+    }
+  }
+}

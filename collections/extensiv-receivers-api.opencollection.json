@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Extensiv 3PL Warehouse Manager API (modeled) Authentication Receivers API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Receivers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List receivers / ASNs (endpointsModeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://secure-wms.com/inventory/receivers",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List receivers / ASNs (endpointsModeled)"
+        },
+        {
+          "info": {
+            "name": "Create a receiver / ASN (endpointsModeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://secure-wms.com/inventory/receivers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a receiver / ASN (endpointsModeled)"
+        },
+        {
+          "info": {
+            "name": "Retrieve a receiver / ASN (endpointsModeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://secure-wms.com/inventory/receivers/:receiverId",
+            "params": [
+              {
+                "name": "receiverId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a receiver / ASN (endpointsModeled)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

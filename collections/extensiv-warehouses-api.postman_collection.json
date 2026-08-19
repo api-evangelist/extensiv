@@ -1,0 +1,115 @@
+{
+  "item": [
+    {
+      "id": "a4fee0da-0f35-451c-a1a0-01049794cf8f",
+      "name": "Warehouses",
+      "description": {
+        "content": "Physical facilities (endpointsModeled).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "16dd2d07-b5d9-43c5-9a52-99841cfb86c9",
+          "name": "List warehouses/facilities (endpointsModeled)",
+          "request": {
+            "name": "List warehouses/facilities (endpointsModeled)",
+            "description": {},
+            "url": {
+              "path": [
+                "facilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d29bfc45-ca52-4044-bc36-2bcb86cb4356",
+              "name": "A collection of facilities.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"facilities\": [\n      {\n        \"facilityId\": 500,\n        \"name\": \"string\"\n      },\n      {\n        \"facilityId\": 2743,\n        \"name\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://secure-wms.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b51d55f0-1abe-499e-bcc2-4a9c1286f1f8",
+    "name": "Extensiv 3PL Warehouse Manager API (modeled) Authentication Warehouses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Modeled OpenAPI description of the Extensiv 3PL Warehouse Manager REST API (formerly the 3PL Central REST API). Authentication is CONFIRMED against Extensiv's public help documentation: a Base64-encoded \"Client ID:Client Secret\" authorization header plus a grant_type is POSTed to https://secure-wms.com/AuthServer/api/Token to mint a short-lived bearer access token (typically valid 30-60 minutes), which is then sent as `Authorization: Bearer <token>` on all resource calls.\nThe resource endpoints below (orders, inventory, stock summaries, items, customers, receivers/ASN, warehouses) are MODELED from Extensiv's publicly documented resource areas and common API use cases. The full request/response reference at developer.extensiv.com is a JavaScript-rendered developer portal and is effectively gated, so exact paths, query parameters, and payload schemas here are honestly modeled and should be reconciled against the live reference. The 3PL Warehouse Manager REST API is a HATEOAS/HAL-style hypermedia API; only HTTPS is supported (no plain HTTP).\nNOTE: The SecureWMS / 3PL Warehouse Manager REST API is profiled in more detail in the sibling all/3plcentral catalog entry. This description supports the Extensiv company/platform entry.\n\nContact Support:\n Name: Extensiv API Access\n Email: api@extensiv.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,514 @@
+{
+  "item": [
+    {
+      "id": "2329293a-a7bd-485e-bb02-fbbd066a08c8",
+      "name": "Orders",
+      "description": {
+        "content": "Sales/fulfillment orders (endpointsModeled).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2da1ab30-cc77-44f5-99ef-5fb62710baad",
+          "name": "List orders (endpointsModeled)",
+          "request": {
+            "name": "List orders (endpointsModeled)",
+            "description": {},
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pgsiz",
+                  "value": "<integer>",
+                  "description": "Page size."
+                },
+                {
+                  "disabled": false,
+                  "key": "pgnum",
+                  "value": "<integer>",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "rql",
+                  "value": "<string>",
+                  "description": "Resource Query Language filter (e.g. by customer, status, date)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "38adefdf-045e-4f17-8f3f-77418d086d79",
+              "name": "A paged collection of orders.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pgsiz",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pgnum",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "rql",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"totalResults\": 7144,\n  \"_embedded\": {\n    \"orders\": [\n      {\n        \"orderId\": 2797,\n        \"customerId\": 2499,\n        \"referenceNum\": \"string\",\n        \"facilityId\": 8954,\n        \"status\": \"string\",\n        \"orderItems\": [\n          {\n            \"orderItemId\": 2589,\n            \"itemIdentifier\": \"string\",\n            \"qty\": 8976.518585925958\n          },\n          {\n            \"orderItemId\": 7501,\n            \"itemIdentifier\": \"string\",\n            \"qty\": 5534.742145986011\n          }\n        ]\n      },\n      {\n        \"orderId\": 4776,\n        \"customerId\": 9199,\n        \"referenceNum\": \"string\",\n        \"facilityId\": 8742,\n        \"status\": \"string\",\n        \"orderItems\": [\n          {\n            \"orderItemId\": 2556,\n            \"itemIdentifier\": \"string\",\n            \"qty\": 4147.4974325182175\n          },\n          {\n            \"orderItemId\": 7441,\n            \"itemIdentifier\": \"string\",\n            \"qty\": 9790.203234889439\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c404972f-8f80-4e8f-9894-86d51353a37b",
+          "name": "Create an order (endpointsModeled)",
+          "request": {
+            "name": "Create an order (endpointsModeled)",
+            "description": {},
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"<integer>\",\n  \"customerId\": \"<integer>\",\n  \"referenceNum\": \"<string>\",\n  \"facilityId\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"orderItems\": [\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    },\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "30613dca-da54-45ef-80f7-34f50fedd8ad",
+              "name": "Order created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<integer>\",\n  \"customerId\": \"<integer>\",\n  \"referenceNum\": \"<string>\",\n  \"facilityId\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"orderItems\": [\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    },\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"<integer>\",\n  \"customerId\": \"<integer>\",\n  \"referenceNum\": \"<string>\",\n  \"facilityId\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"orderItems\": [\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    },\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64403170-6f02-4279-b5a3-a76df2c77806",
+          "name": "Retrieve an order (endpointsModeled)",
+          "request": {
+            "name": "Retrieve an order (endpointsModeled)",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "orderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "567b351c-1d72-4204-a845-68cf8ec6aa3a",
+              "name": "The requested order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"<integer>\",\n  \"customerId\": \"<integer>\",\n  \"referenceNum\": \"<string>\",\n  \"facilityId\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"orderItems\": [\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    },\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fd76f1b-3bf6-4c22-aec0-28710d4a757c",
+              "name": "Order not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae92d939-760b-4c88-880f-9abb7e0bb1d7",
+          "name": "Update an order (endpointsModeled)",
+          "request": {
+            "name": "Update an order (endpointsModeled)",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "orderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"<integer>\",\n  \"customerId\": \"<integer>\",\n  \"referenceNum\": \"<string>\",\n  \"facilityId\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"orderItems\": [\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    },\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "da303b26-c70b-495d-aded-4ff3920f4c01",
+              "name": "Order updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<integer>\",\n  \"customerId\": \"<integer>\",\n  \"referenceNum\": \"<string>\",\n  \"facilityId\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"orderItems\": [\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    },\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://secure-wms.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a1a715cd-5e4d-40e5-a027-940a77588e19",
+    "name": "Extensiv 3PL Warehouse Manager API (modeled) Authentication Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Modeled OpenAPI description of the Extensiv 3PL Warehouse Manager REST API (formerly the 3PL Central REST API). Authentication is CONFIRMED against Extensiv's public help documentation: a Base64-encoded \"Client ID:Client Secret\" authorization header plus a grant_type is POSTed to https://secure-wms.com/AuthServer/api/Token to mint a short-lived bearer access token (typically valid 30-60 minutes), which is then sent as `Authorization: Bearer <token>` on all resource calls.\nThe resource endpoints below (orders, inventory, stock summaries, items, customers, receivers/ASN, warehouses) are MODELED from Extensiv's publicly documented resource areas and common API use cases. The full request/response reference at developer.extensiv.com is a JavaScript-rendered developer portal and is effectively gated, so exact paths, query parameters, and payload schemas here are honestly modeled and should be reconciled against the live reference. The 3PL Warehouse Manager REST API is a HATEOAS/HAL-style hypermedia API; only HTTPS is supported (no plain HTTP).\nNOTE: The SecureWMS / 3PL Warehouse Manager REST API is profiled in more detail in the sibling all/3plcentral catalog entry. This description supports the Extensiv company/platform entry.\n\nContact Support:\n Name: Extensiv API Access\n Email: api@extensiv.com",
+      "type": "text/plain"
+    }
+  }
+}

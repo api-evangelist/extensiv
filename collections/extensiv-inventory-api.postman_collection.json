@@ -1,0 +1,255 @@
+{
+  "item": [
+    {
+      "id": "3d80fb63-708e-4e00-b543-514050a26326",
+      "name": "Inventory",
+      "description": {
+        "content": "On-hand inventory and stock summaries (endpointsModeled).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d37895f0-f410-48c0-a604-21bce13f611d",
+          "name": "Retrieve inventory (endpointsModeled)",
+          "request": {
+            "name": "Retrieve inventory (endpointsModeled)",
+            "description": {
+              "content": "Retrieve on-hand inventory, optionally filtered by customer, facility, or a received-on/before date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inventory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "rql",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pgsiz",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pgnum",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "52fd17b8-7c51-44f1-8147-272ece6cd8ac",
+              "name": "A collection of inventory records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rql",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pgsiz",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pgnum",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"totalResults\": 899,\n  \"_embedded\": {\n    \"inventory\": [\n      {\n        \"itemIdentifier\": \"string\",\n        \"customerId\": 1554,\n        \"facilityId\": 615,\n        \"onHand\": 6462.655597723269,\n        \"available\": 2249.1334326054302,\n        \"receivedDate\": \"2001-09-23T01:04:57.500Z\"\n      },\n      {\n        \"itemIdentifier\": \"string\",\n        \"customerId\": 3749,\n        \"facilityId\": 8635,\n        \"onHand\": 8120.343517981846,\n        \"available\": 6423.264965457868,\n        \"receivedDate\": \"2020-11-13T10:28:46.418Z\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3d77c98-df9e-4f58-bec0-9ddb42c432c9",
+          "name": "Retrieve stock summaries (endpointsModeled)",
+          "request": {
+            "name": "Retrieve stock summaries (endpointsModeled)",
+            "description": {
+              "content": "Rolled-up available/on-hand/committed quantities by SKU.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inventory",
+                "stockSummaries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "facilityId",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "customerId",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "79b5ddf7-1183-4491-8663-1cdd4b18765b",
+              "name": "Stock summary records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory",
+                    "stockSummaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "facilityId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "customerId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"stockSummaries\": [\n      {\n        \"sku\": \"string\",\n        \"onHand\": 84.3430560124292,\n        \"available\": 4708.212504339919,\n        \"committed\": 869.9316430951254\n      },\n      {\n        \"sku\": \"string\",\n        \"onHand\": 8649.22550779383,\n        \"available\": 1547.6388399775665,\n        \"committed\": 7133.829970678498\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://secure-wms.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c751085f-d28a-40c8-92ce-70b86a59fb4a",
+    "name": "Extensiv 3PL Warehouse Manager API (modeled) Authentication Inventory API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Modeled OpenAPI description of the Extensiv 3PL Warehouse Manager REST API (formerly the 3PL Central REST API). Authentication is CONFIRMED against Extensiv's public help documentation: a Base64-encoded \"Client ID:Client Secret\" authorization header plus a grant_type is POSTed to https://secure-wms.com/AuthServer/api/Token to mint a short-lived bearer access token (typically valid 30-60 minutes), which is then sent as `Authorization: Bearer <token>` on all resource calls.\nThe resource endpoints below (orders, inventory, stock summaries, items, customers, receivers/ASN, warehouses) are MODELED from Extensiv's publicly documented resource areas and common API use cases. The full request/response reference at developer.extensiv.com is a JavaScript-rendered developer portal and is effectively gated, so exact paths, query parameters, and payload schemas here are honestly modeled and should be reconciled against the live reference. The 3PL Warehouse Manager REST API is a HATEOAS/HAL-style hypermedia API; only HTTPS is supported (no plain HTTP).\nNOTE: The SecureWMS / 3PL Warehouse Manager REST API is profiled in more detail in the sibling all/3plcentral catalog entry. This description supports the Extensiv company/platform entry.\n\nContact Support:\n Name: Extensiv API Access\n Email: api@extensiv.com",
+      "type": "text/plain"
+    }
+  }
+}

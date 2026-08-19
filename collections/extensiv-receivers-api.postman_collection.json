@@ -1,0 +1,318 @@
+{
+  "item": [
+    {
+      "id": "90d69746-2151-450a-b917-6c9d8f45b208",
+      "name": "Receivers",
+      "description": {
+        "content": "Inbound receivers / ASNs (endpointsModeled).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "16877418-eb2a-49d0-ba2c-7578f286b526",
+          "name": "List receivers / ASNs (endpointsModeled)",
+          "request": {
+            "name": "List receivers / ASNs (endpointsModeled)",
+            "description": {},
+            "url": {
+              "path": [
+                "inventory",
+                "receivers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dfb7cd93-a7c9-4c4c-869d-f23de29423b2",
+              "name": "A collection of receivers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory",
+                    "receivers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"totalResults\": 7639,\n  \"_embedded\": {\n    \"receivers\": [\n      {\n        \"receiverId\": 9901,\n        \"customerId\": 4263,\n        \"facilityId\": 127,\n        \"referenceNum\": \"string\",\n        \"receiveItems\": [\n          {\n            \"orderItemId\": 3119,\n            \"itemIdentifier\": \"string\",\n            \"qty\": 5557.818563898698\n          },\n          {\n            \"orderItemId\": 1459,\n            \"itemIdentifier\": \"string\",\n            \"qty\": 8111.948050577084\n          }\n        ]\n      },\n      {\n        \"receiverId\": 4218,\n        \"customerId\": 105,\n        \"facilityId\": 9597,\n        \"referenceNum\": \"string\",\n        \"receiveItems\": [\n          {\n            \"orderItemId\": 7783,\n            \"itemIdentifier\": \"string\",\n            \"qty\": 9774.528819643721\n          },\n          {\n            \"orderItemId\": 4383,\n            \"itemIdentifier\": \"string\",\n            \"qty\": 4456.44579341677\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a491f29-ab86-4879-9627-e5a14039a6ff",
+          "name": "Create a receiver / ASN (endpointsModeled)",
+          "request": {
+            "name": "Create a receiver / ASN (endpointsModeled)",
+            "description": {},
+            "url": {
+              "path": [
+                "inventory",
+                "receivers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"receiverId\": \"<integer>\",\n  \"customerId\": \"<integer>\",\n  \"facilityId\": \"<integer>\",\n  \"referenceNum\": \"<string>\",\n  \"receiveItems\": [\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    },\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c6ca1f8f-cf8e-4d7e-8130-4c219e096081",
+              "name": "Receiver created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory",
+                    "receivers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"receiverId\": \"<integer>\",\n  \"customerId\": \"<integer>\",\n  \"facilityId\": \"<integer>\",\n  \"referenceNum\": \"<string>\",\n  \"receiveItems\": [\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    },\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ca0251e-2db2-473f-a0a5-65266ac16114",
+          "name": "Retrieve a receiver / ASN (endpointsModeled)",
+          "request": {
+            "name": "Retrieve a receiver / ASN (endpointsModeled)",
+            "description": {},
+            "url": {
+              "path": [
+                "inventory",
+                "receivers",
+                ":receiverId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "receiverId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8866e582-7f36-4300-b0e5-2ec97515e205",
+              "name": "The requested receiver.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory",
+                    "receivers",
+                    ":receiverId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "receiverId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"receiverId\": \"<integer>\",\n  \"customerId\": \"<integer>\",\n  \"facilityId\": \"<integer>\",\n  \"referenceNum\": \"<string>\",\n  \"receiveItems\": [\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    },\n    {\n      \"orderItemId\": \"<integer>\",\n      \"itemIdentifier\": \"<string>\",\n      \"qty\": \"<number>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://secure-wms.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3b63ee34-f75d-477a-9085-552503c927b2",
+    "name": "Extensiv 3PL Warehouse Manager API (modeled) Authentication Receivers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Modeled OpenAPI description of the Extensiv 3PL Warehouse Manager REST API (formerly the 3PL Central REST API). Authentication is CONFIRMED against Extensiv's public help documentation: a Base64-encoded \"Client ID:Client Secret\" authorization header plus a grant_type is POSTed to https://secure-wms.com/AuthServer/api/Token to mint a short-lived bearer access token (typically valid 30-60 minutes), which is then sent as `Authorization: Bearer <token>` on all resource calls.\nThe resource endpoints below (orders, inventory, stock summaries, items, customers, receivers/ASN, warehouses) are MODELED from Extensiv's publicly documented resource areas and common API use cases. The full request/response reference at developer.extensiv.com is a JavaScript-rendered developer portal and is effectively gated, so exact paths, query parameters, and payload schemas here are honestly modeled and should be reconciled against the live reference. The 3PL Warehouse Manager REST API is a HATEOAS/HAL-style hypermedia API; only HTTPS is supported (no plain HTTP).\nNOTE: The SecureWMS / 3PL Warehouse Manager REST API is profiled in more detail in the sibling all/3plcentral catalog entry. This description supports the Extensiv company/platform entry.\n\nContact Support:\n Name: Extensiv API Access\n Email: api@extensiv.com",
+      "type": "text/plain"
+    }
+  }
+}

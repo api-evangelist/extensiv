@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Extensiv 3PL Warehouse Manager API (modeled) Authentication Orders API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List orders (endpointsModeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://secure-wms.com/orders",
+            "params": [
+              {
+                "name": "pgsiz",
+                "value": "",
+                "type": "query",
+                "description": "Page size."
+              },
+              {
+                "name": "pgnum",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "rql",
+                "value": "",
+                "type": "query",
+                "description": "Resource Query Language filter (e.g. by customer, status, date)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List orders (endpointsModeled)"
+        },
+        {
+          "info": {
+            "name": "Create an order (endpointsModeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://secure-wms.com/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create an order (endpointsModeled)"
+        },
+        {
+          "info": {
+            "name": "Retrieve an order (endpointsModeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://secure-wms.com/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve an order (endpointsModeled)"
+        },
+        {
+          "info": {
+            "name": "Update an order (endpointsModeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://secure-wms.com/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update an order (endpointsModeled)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

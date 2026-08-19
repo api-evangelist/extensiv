@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Extensiv 3PL Warehouse Manager API (modeled) Authentication Inventory API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inventory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve inventory (endpointsModeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://secure-wms.com/inventory",
+            "params": [
+              {
+                "name": "rql",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pgsiz",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pgnum",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve on-hand inventory, optionally filtered by customer, facility, or a received-on/before date."
+        },
+        {
+          "info": {
+            "name": "Retrieve stock summaries (endpointsModeled)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://secure-wms.com/inventory/stockSummaries",
+            "params": [
+              {
+                "name": "facilityId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rolled-up available/on-hand/committed quantities by SKU."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
