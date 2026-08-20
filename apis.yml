@@ -101,6 +101,8 @@ apis:
   humanURL: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
   baseURL: https://secure-wms.com
   tags:
+  - Item
+  tags_raw:
   - Items
   properties:
   - type: OpenAPI
@@ -119,6 +121,8 @@ apis:
   humanURL: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
   baseURL: https://secure-wms.com
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
