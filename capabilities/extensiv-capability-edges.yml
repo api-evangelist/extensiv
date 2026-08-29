@@ -1,0 +1,26 @@
+slug: extensiv
+provider: Extensiv
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Receivers
+  spec_file: extensiv-receivers-api-openapi.yml
+  capability_id: BC-2460.10
+  capability_id_l1: BC-2460
+  capability_name: Inbound Operations Management
+  confidence: 0.78
+  evidence: 'GET /inventory/receivers List receivers / ASNs; POST /inventory/receivers Create a receiver
+    / ASN; schemas: Receiver, ReceiverCollection'
+  reason: Receivers/ASNs in this WMS are advance shipping notices driving goods receipt into the warehouse,
+    which is inbound operations management. Wording is explicit about ASNs under the /inventory namespace,
+    though endpoints are vendor-modeled rather than confirmed.

@@ -184,6 +184,9 @@ apis:
   - type: APIReference
     url: https://help.extensiv.com/rest-api/providing-rest-api-access
 common:
+- type: CapabilityMap
+  url: capabilities/extensiv-capability-edges.yml
+  name: Extensiv Business Capability Map
 - type: AgenticAccess
   url: agentic-access/extensiv-agentic-access.yml
 - type: TrustCenter
