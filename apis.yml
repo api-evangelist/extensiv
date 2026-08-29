@@ -14,6 +14,18 @@ description: Extensiv (formerly 3PL Central, rebranded in 2022) is a cloud-nativ
   bearer tokens. NOTE - the SecureWMS/3PL Warehouse Manager REST API itself is
   documented in more detail in the sibling all/3plcentral entry; this entry profiles
   the Extensiv company and platform and its relationship to that API.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
