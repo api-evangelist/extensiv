@@ -171,6 +171,8 @@ apis:
   humanURL: https://developer.extensiv.com/pages/3pl-wareshouse-manager.html
   baseURL: https://secure-wms.com
   tags:
+  - Warehouse
+  tags_raw:
   - Warehouses
   properties:
   - type: OpenAPI
