@@ -1,12 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Extensiv 3PL Warehouse Manager API (modeled) Authentication Warehouses API
+  title: Extensiv 3PL Warehouse Manager API (modeled) Warehouses API
   version: 1.0.0
-  description: 'Modeled OpenAPI description of the Extensiv 3PL Warehouse Manager REST API (formerly the 3PL Central REST API). Authentication is CONFIRMED against Extensiv''s public help documentation: a Base64-encoded "Client ID:Client Secret" authorization header plus a grant_type is POSTed to https://secure-wms.com/AuthServer/api/Token to mint a short-lived bearer access token (typically valid 30-60 minutes), which is then sent as `Authorization: Bearer <token>` on all resource calls.
-
-    The resource endpoints below (orders, inventory, stock summaries, items, customers, receivers/ASN, warehouses) are MODELED from Extensiv''s publicly documented resource areas and common API use cases. The full request/response reference at developer.extensiv.com is a JavaScript-rendered developer portal and is effectively gated, so exact paths, query parameters, and payload schemas here are honestly modeled and should be reconciled against the live reference. The 3PL Warehouse Manager REST API is a HATEOAS/HAL-style hypermedia API; only HTTPS is supported (no plain HTTP).
-
-    NOTE: The SecureWMS / 3PL Warehouse Manager REST API is profiled in more detail in the sibling all/3plcentral catalog entry. This description supports the Extensiv company/platform entry.'
+  description: Modeled OpenAPI description of the Extensiv 3PL Warehouse Manager REST API (formerly the 3PL Central REST API).
   contact:
     name: Extensiv API Access
     email: api@extensiv.com
@@ -35,6 +31,8 @@ paths:
                 $ref: '#/components/schemas/FacilityCollection'
       security:
       - bearerAuth: []
+      operationId: getFacilities
+      x-operation-id-source: derived
 components:
   schemas:
     FacilityCollection:

@@ -1,13 +1,7 @@
 {
   "provider": "extensiv",
   "sources": [
-    "extensiv-authentication-api-openapi.yml",
-    "extensiv-customers-api-openapi.yml",
-    "extensiv-inventory-api-openapi.yml",
-    "extensiv-items-api-openapi.yml",
-    "extensiv-orders-api-openapi.yml",
-    "extensiv-receivers-api-openapi.yml",
-    "extensiv-warehouses-api-openapi.yml"
+    "_original/extensiv-openapi.yml"
   ],
   "outputs": [
     "extensiv-authentication-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "extensiv-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "extensiv-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "extensiv-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "extensiv-inventory-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "extensiv-items-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "extensiv-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "extensiv-receivers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "extensiv-warehouses-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
