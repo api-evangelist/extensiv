@@ -35,6 +35,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Facility:
+      type: object
+      properties:
+        facilityId:
+          type: integer
+        name:
+          type: string
     FacilityCollection:
       type: object
       properties:
@@ -45,13 +52,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Facility'
-    Facility:
-      type: object
-      properties:
-        facilityId:
-          type: integer
-        name:
-          type: string
   securitySchemes:
     basicClientCredentials:
       type: http

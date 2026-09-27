@@ -75,6 +75,29 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    StockSummary:
+      type: object
+      properties:
+        sku:
+          type: string
+        onHand:
+          type: number
+        available:
+          type: number
+        committed:
+          type: number
+    InventoryCollection:
+      type: object
+      properties:
+        totalResults:
+          type: integer
+        _embedded:
+          type: object
+          properties:
+            inventory:
+              type: array
+              items:
+                $ref: '#/components/schemas/InventoryRecord'
     InventoryRecord:
       type: object
       properties:
@@ -91,18 +114,6 @@ components:
         receivedDate:
           type: string
           format: date-time
-    InventoryCollection:
-      type: object
-      properties:
-        totalResults:
-          type: integer
-        _embedded:
-          type: object
-          properties:
-            inventory:
-              type: array
-              items:
-                $ref: '#/components/schemas/InventoryRecord'
     StockSummaryCollection:
       type: object
       properties:
@@ -113,17 +124,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/StockSummary'
-    StockSummary:
-      type: object
-      properties:
-        sku:
-          type: string
-        onHand:
-          type: number
-        available:
-          type: number
-        committed:
-          type: number
   securitySchemes:
     basicClientCredentials:
       type: http
