@@ -119,6 +119,27 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    OrderCollection:
+      type: object
+      properties:
+        totalResults:
+          type: integer
+        _embedded:
+          type: object
+          properties:
+            orders:
+              type: array
+              items:
+                $ref: '#/components/schemas/Order'
+    OrderItem:
+      type: object
+      properties:
+        orderItemId:
+          type: integer
+        itemIdentifier:
+          type: string
+        qty:
+          type: number
     Order:
       type: object
       properties:
@@ -136,27 +157,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OrderItem'
-    OrderItem:
-      type: object
-      properties:
-        orderItemId:
-          type: integer
-        itemIdentifier:
-          type: string
-        qty:
-          type: number
-    OrderCollection:
-      type: object
-      properties:
-        totalResults:
-          type: integer
-        _embedded:
-          type: object
-          properties:
-            orders:
-              type: array
-              items:
-                $ref: '#/components/schemas/Order'
   securitySchemes:
     basicClientCredentials:
       type: http
