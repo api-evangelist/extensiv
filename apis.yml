@@ -49,6 +49,9 @@ tags:
 - Fulfillment
 - Logistics
 - Supply Chain
+- Order
+- SecureWMS
+- Extensiv
 tags_raw:
 - 3PL
 - Warehouse Management
@@ -58,6 +61,9 @@ tags_raw:
 - Fulfillment
 - Logistics
 - Supply Chain
+- Order
+- SecureWMS
+- Extensiv
 created: '2026-07-04'
 modified: '2026-07-04'
 specificationVersion: '0.23'
@@ -220,6 +226,12 @@ common:
   url: finops/extensiv-finops.yml
 - url: https://www.extensiv.com/blog
   type: Blog
+- type: GitHubOrganization
+  url: https://github.com/tpl-central
+- type: Website
+  url: https://www.extensiv.com/3pl-warehouse-manager
+- type: Documentation
+  url: https://developer.3plcentral.com/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
