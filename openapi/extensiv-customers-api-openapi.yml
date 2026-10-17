@@ -57,6 +57,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Customer:
+      type: object
+      properties:
+        customerId:
+          type: integer
+        companyName:
+          type: string
     CustomerCollection:
       type: object
       properties:
@@ -69,13 +76,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Customer'
-    Customer:
-      type: object
-      properties:
-        customerId:
-          type: integer
-        companyName:
-          type: string
   securitySchemes:
     basicClientCredentials:
       type: http
