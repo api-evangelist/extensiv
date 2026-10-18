@@ -29,3 +29,37 @@
     detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
+- slug: extensiv-meltano
+  label: Meltano
+  partner: meltano
+  partner_name: Meltano
+  type: marketplace
+  marketplace: meltano-hub
+  channel: elt-connector
+  evidence: https://hub.meltano.com/extractors/tap-3plcentral--airbyte
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Meltano Hub (github.com/meltano/hub _data/meltano extractors + loaders)
+    spec_file: null
+    role: elt-connector:meltano-hub
+    registered_name: Extensiv 3PL Warehouse Manager
+    matched_domain: extensiv.com
+    matched_by: domain
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    plugins:
+    - tap-3plcentral--airbyte
+    - tap-3plcentral--bytecodeio
+    - tap-3plcentral--singer-io
+    maintenance_status:
+    - beta
+    - inactive
+    - unknown
+    quality:
+    - bronze
+    - unknown
+    builder: 'community (Meltano Hub variant maintainers: airbyte, bytecodeio, singer-io)'
+  status: pending-partner-spec
+  arazzo: null

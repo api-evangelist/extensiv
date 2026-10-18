@@ -25,12 +25,47 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-consumer-goods.py
   first_seen: '2026-10-15'
+- partner_name: Meltano
+  partner: meltano
+  partner_match: aggregator
+  type: marketplace
+  marketplace: meltano-hub
+  channel: elt-connector
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://hub.meltano.com/extractors/tap-3plcentral--airbyte
+  category: null
+  contract_reference:
+    register: Meltano Hub (github.com/meltano/hub _data/meltano extractors + loaders)
+    spec_file: null
+    role: elt-connector:meltano-hub
+    registered_name: Extensiv 3PL Warehouse Manager
+    matched_domain: extensiv.com
+    matched_by: domain
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    plugins:
+    - tap-3plcentral--airbyte
+    - tap-3plcentral--bytecodeio
+    - tap-3plcentral--singer-io
+    maintenance_status:
+    - beta
+    - inactive
+    - unknown
+    quality:
+    - bronze
+    - unknown
+    builder: 'community (Meltano Hub variant maintainers: airbyte, bytecodeio, singer-io)'
+  detected_by: sweep-data-integration.py
+  first_seen: '2026-10-18'
 generated: '2026-10-15'
 method: searched
 source:
 - https://www.gs1.org/services/gdsn/certified-data-pools-list
 - https://www.gs1us.org/services/find-gs1-us-solution-partner/profiles
 checked:
+- https://github.com/meltano/hub
 - https://www.gs1.org/services/gdsn/certified-data-pools-list
 - https://www.gs1us.org/services/find-gs1-us-solution-partner/profiles
 - https://www.spscommerce.com/partner-community/directory/
