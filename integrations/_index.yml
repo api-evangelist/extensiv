@@ -26,7 +26,7 @@
     - Software Provider
     signal_note: 'participation only: a directory listing, never a count'
     detected_by: sweep-consumer-goods.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
 - slug: extensiv-meltano
@@ -61,5 +61,18 @@
     - bronze
     - unknown
     builder: 'community (Meltano Hub variant maintainers: airbyte, bytecodeio, singer-io)'
+  status: not-a-workflow
+  arazzo: null
+- slug: extensiv-bigcommerce-own
+  label: BigCommerce (own)
+  partner: bigcommerce
+  partner_name: BigCommerce (own)
+  category: Shipping & Fulfillment, Fulfillment & Delivery
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.bigcommerce.com/apps/cartrover/
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
