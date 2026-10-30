@@ -1,4 +1,4 @@
-# Extensiv (extensiv)
+# Extensiv
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,187 +64,131 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Extensiv (formerly 3PL Central, rebranded in 2022) is a cloud-native omnichannel fulfillment software company for third-party logistics providers (3PLs) and brands. Its platform combines warehouse management (3PL Warehouse Manager and Warehouse Manager), order management, inventory management, and integration tooling - built from the combination of 3PL Central, Skubana, Scout, and CartRover. The flagship developer surface is the 3PL Warehouse Manager REST API (auth server at `secure-wms.com/AuthServer`), which exposes orders, inventory, items, customers, receivers/ASN, stock summaries, and warehouses to external integrators. Access is provisioned with Client ID / Client Secret credentials that mint short-lived bearer tokens.
+Extensiv (formerly 3PL Central, rebranded in 2022) is a cloud-native omnichannel fulfillment software company for third-party logistics providers (3PLs) and brands. Its platform combines warehouse management (3PL Warehouse Manager and Warehouse Manager), order management, inventory management, and integration tooling - built from the combination of 3PL Central, Skubana, Scout, and CartRover. The flagship developer surface is the 3PL Warehouse Manager REST API (auth server at secure-wms.com/AuthServer), which exposes orders, inventory, items, customers, receivers/ASN, stock summaries, and warehouses to external integrators. Access is provisioned with Client ID / Client Secret credentials that mint short-lived bearer tokens. NOTE - the SecureWMS/3PL Warehouse Manager REST API itself is documented in more detail in the sibling all/3plcentral entry; this entry profiles the Extensiv company and platform and its relationship to that API.
 
-**Relationship note:** The SecureWMS / 3PL Warehouse Manager REST API itself is profiled in more detail in the sibling `all/3plcentral` entry. This entry documents the Extensiv company and platform and its relationship to that API rather than duplicating it. Resource endpoints here are honestly modeled from Extensiv's publicly documented resource areas; only the authentication endpoint is confirmed, because the full reference at `developer.extensiv.com` is a JavaScript-rendered developer portal that is effectively gated. Request REST API access via `api@extensiv.com`.
+**Areas:** 3PL · Warehouse Management · WMS · Order Management · Inventory · Fulfillment · Logistics · Supply Chain · Order · SecureWMS · Extensiv
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/extensiv/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/extensiv/refs/heads/main/apis.yml)
+## Extensiv on APIs.io
 
-## Tags
+Everything profiled for Extensiv is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/extensiv/](https://apis.io/providers/extensiv/)** — or go straight to one of the APIs or properties below.
 
-- 3PL
-- Warehouse Management
-- WMS
-- Order Management
-- Inventory Management
-- Fulfillment
-- Logistics
-- Supply Chain
+### APIs (7)
 
-## Timestamps
+- [Extensiv Authentication API](https://apis.io/apis/extensiv/extensiv-authentication-api/) — OAuth2-style token endpoint (endpointsConfirmed).
+- [Extensiv Customers API](https://apis.io/apis/extensiv/extensiv-customers-api/) — Customer/tenant accounts (endpointsModeled).
+- [Extensiv Inventory API](https://apis.io/apis/extensiv/extensiv-inventory-api/) — On-hand inventory and stock summaries (endpointsModeled).
+- [Extensiv Items API](https://apis.io/apis/extensiv/extensiv-items-api/) — Customer SKU/item master (endpointsModeled).
+- [Extensiv Orders API](https://apis.io/apis/extensiv/extensiv-orders-api/) — Sales/fulfillment orders (endpointsModeled).
+- [Extensiv Receivers API](https://apis.io/apis/extensiv/extensiv-receivers-api/) — Inbound receivers / ASNs (endpointsModeled).
+- [Extensiv Warehouses API](https://apis.io/apis/extensiv/extensiv-warehouses-api/) — Physical facilities (endpointsModeled).
 
-- **Created:** 2026-07-04
-- **Modified:** 2026-07-04
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Extensiv Orders API
+#### Agentic access (1)
 
-Create and retrieve sales/fulfillment orders in 3PL Warehouse Manager - the most common use of the API. Supports listing, filtering, creating, updating, and retrieving individual orders along with their order items and allocation state.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **Human URL:** [https://developer.extensiv.com/pages/3pl-wareshouse-manager.html](https://developer.extensiv.com/pages/3pl-wareshouse-manager.html)
-- **Base URL:** `https://secure-wms.com`
+- [Extensiv Agentic Access](https://apis.io/agentic-access/extensiv/extensiv-agentic-access/)
 
-#### Tags
+#### Collections (8)
 
-- Orders
-- Fulfillment
-- Shipping
+Postman and Open Collection request collections.
 
-#### Properties
+- [Extensiv 3PL Warehouse Manager API (modeled)](https://apis.io/collections/extensiv/open-extensiv/)
+- [Extensiv 3PL Warehouse Manager API (modeled) Authentication API](https://apis.io/collections/extensiv/open-extensiv-authentication-api/)
+- [Extensiv 3PL Warehouse Manager API (modeled) Authentication Customers API](https://apis.io/collections/extensiv/open-extensiv-customers-api/)
+- [Extensiv 3PL Warehouse Manager API (modeled) Authentication Inventory API](https://apis.io/collections/extensiv/open-extensiv-inventory-api/)
+- [Extensiv 3PL Warehouse Manager API (modeled) Authentication Items API](https://apis.io/collections/extensiv/open-extensiv-items-api/)
+- [Extensiv 3PL Warehouse Manager API (modeled) Authentication Orders API](https://apis.io/collections/extensiv/open-extensiv-orders-api/)
+- [Extensiv 3PL Warehouse Manager API (modeled) Authentication Receivers API](https://apis.io/collections/extensiv/open-extensiv-receivers-api/)
+- [Extensiv 3PL Warehouse Manager API (modeled) Authentication Warehouses API](https://apis.io/collections/extensiv/open-extensiv-warehouses-api/)
 
-- [Documentation](https://help.extensiv.com/en_US/rest-api)
-- [API Reference](https://developer.extensiv.com/pages/3pl-wareshouse-manager.html)
-- [OpenAPI](openapi/extensiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/extensiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/extensiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Security (3)
 
-### Extensiv Inventory API
+Authentication, trust centre, and vulnerability disclosure.
 
-Retrieve on-hand inventory and stock summaries, including inventory received on or before a given date and rolled-up availability by SKU. A primary read surface for keeping external systems in sync with warehouse stock.
+- [Extensiv Authentication](https://apis.io/security/extensiv/extensiv-authentication/)
+- [Extensiv Domain Security](https://apis.io/security/extensiv/extensiv-domain-security/)
+- [Extensiv Trust Center](https://apis.io/security/extensiv/extensiv-trust-center/)
 
-- **Human URL:** [https://developer.extensiv.com/pages/3pl-wareshouse-manager.html](https://developer.extensiv.com/pages/3pl-wareshouse-manager.html)
-- **Base URL:** `https://secure-wms.com`
+#### Plans and pricing (1)
 
-#### Tags
+Published plans, tiers and prices.
 
-- Inventory
-- Stock Summaries
-- Availability
+- [Extensiv Plans Pricing](https://apis.io/plans/extensiv/extensiv-plans-pricing/)
 
-#### Properties
+#### Rate limits (1)
 
-- [Documentation](https://help.extensiv.com/en_US/rest-api)
-- [API Reference](https://developer.extensiv.com/pages/3pl-wareshouse-manager.html)
-- [OpenAPI](openapi/extensiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/extensiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/extensiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published request limits.
 
-### Extensiv Items API
+- [Extensiv Rate Limits](https://apis.io/rate-limits/extensiv/extensiv-rate-limits/)
 
-Read the SKU/item master for a customer - the products a 3PL stores and ships. Items are scoped to a customer and carry identifiers, descriptions, and packaging attributes used across orders and inventory.
+#### FinOps (1)
 
-- **Human URL:** [https://developer.extensiv.com/pages/3pl-wareshouse-manager.html](https://developer.extensiv.com/pages/3pl-wareshouse-manager.html)
-- **Base URL:** `https://secure-wms.com`
+What the API costs to run, by operation.
 
-#### Tags
+- [Extensiv Finops](https://apis.io/finops/extensiv/extensiv-finops/)
 
-- Items
-- SKUs
-- Catalog
+## Where to find this API
 
-#### Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [Documentation](https://help.extensiv.com/en_US/rest-api)
-- [API Reference](https://developer.extensiv.com/pages/3pl-wareshouse-manager.html)
-- [OpenAPI](openapi/extensiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/extensiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/extensiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Extensiv Customers API
-
-List and retrieve the customers (the brands/merchants a 3PL serves) configured in a warehouse. Customers are the top-level tenant under which items, orders, and inventory are organized.
-
-- **Human URL:** [https://developer.extensiv.com/pages/3pl-wareshouse-manager.html](https://developer.extensiv.com/pages/3pl-wareshouse-manager.html)
-- **Base URL:** `https://secure-wms.com`
-
-#### Tags
-
-- Customers
-- Accounts
-- Tenants
-
-#### Properties
-
-- [Documentation](https://help.extensiv.com/en_US/rest-api)
-- [API Reference](https://developer.extensiv.com/pages/3pl-wareshouse-manager.html)
-- [OpenAPI](openapi/extensiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/extensiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/extensiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Extensiv Receivers (ASN) API
-
-Manage inbound receivers / advance shipping notices (ASNs) - the expected inbound shipments a warehouse receives against. Create, list, and retrieve receivers and their line items to drive the receiving workflow.
-
-- **Human URL:** [https://developer.extensiv.com/pages/3pl-wareshouse-manager.html](https://developer.extensiv.com/pages/3pl-wareshouse-manager.html)
-- **Base URL:** `https://secure-wms.com`
-
-#### Tags
-
-- Receivers
-- ASN
-- Receiving
-
-#### Properties
-
-- [Documentation](https://help.extensiv.com/en_US/rest-api)
-- [API Reference](https://developer.extensiv.com/pages/3pl-wareshouse-manager.html)
-- [OpenAPI](openapi/extensiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/extensiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/extensiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Extensiv Warehouses API
-
-List the physical warehouses/facilities configured on an account and their identifiers, used to scope inventory, orders, and receiving to a location.
-
-- **Human URL:** [https://developer.extensiv.com/pages/3pl-wareshouse-manager.html](https://developer.extensiv.com/pages/3pl-wareshouse-manager.html)
-- **Base URL:** `https://secure-wms.com`
-
-#### Tags
-
-- Warehouses
-- Facilities
-- Locations
-
-#### Properties
-
-- [Documentation](https://help.extensiv.com/en_US/rest-api)
-- [API Reference](https://developer.extensiv.com/pages/3pl-wareshouse-manager.html)
-- [OpenAPI](openapi/extensiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/extensiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/extensiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Extensiv Auth Token API
-
-OAuth2-style token endpoint at `secure-wms.com/AuthServer`. A Base64 Client ID:Client Secret authorization header plus a grant_type mints a short-lived bearer access token (typically valid 30-60 minutes) that authorizes all other 3PL Warehouse Manager REST API calls. This endpoint is confirmed against Extensiv's public help documentation.
-
-- **Human URL:** [https://help.extensiv.com/rest-api/getting-started-with-credential-management](https://help.extensiv.com/rest-api/getting-started-with-credential-management)
-- **Base URL:** `https://secure-wms.com/AuthServer`
-
-#### Tags
-
-- Authentication
-- OAuth2
-- Tokens
-
-#### Properties
-
-- [Documentation](https://help.extensiv.com/rest-api/getting-started-with-credential-management)
-- [API Reference](https://help.extensiv.com/rest-api/providing-rest-api-access)
-- [OpenAPI](openapi/extensiv-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/extensiv.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/extensiv.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/extensiv)
 - [Website](https://www.extensiv.com)
 - [Documentation](https://help.extensiv.com/en_US/rest-api)
-- [Plans](plans/extensiv-plans-pricing.yml)
-- [Rate Limits](rate-limits/extensiv-rate-limits.yml)
-- [Fin Ops](finops/extensiv-finops.yml)
+- [Blog](https://www.extensiv.com/blog)
+- [GitHub](https://github.com/tpl-central)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 28.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 45.8 |
+| Contract governance | 0.0 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 15.8 |
+
+**Agent readiness 20.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/extensiv/](https://apis.io/providers/extensiv/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Extensiv: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/extensiv/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
